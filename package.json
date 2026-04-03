@@ -1,0 +1,21 @@
+{
+    "name": "bases-card-redirect",
+    "version": "1.0.0",
+    "description": "Override click behaviour in Bases card view based on note properties.",
+    "main": "main.js",
+    "private": true,
+    "scripts": {
+        "dev": "node esbuild.config.mjs",
+        "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+    },
+    "dependencies": {
+        "obsidian": "latest"
+    },
+    "devDependencies": {
+        "@types/node": "^25.5.1",
+        "builtin-modules": "^5.0.0",
+        "esbuild": "^0.28.0",
+        "tslib": "^2.8.1",
+        "typescript": "^6.0.2"
+    }
+}

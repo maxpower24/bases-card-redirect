@@ -1,0 +1,10 @@
+{
+    "id": "bases-card-redirect",
+    "name": "Bases Card Redirect",
+    "version": "1.0.0",
+    "minAppVersion": "1.9.10",
+    "description": "Override click behaviour in Bases card view based on note properties.",
+    "author": "maxpower24",
+    "authorUrl": "https://github.com/maxpower24",
+    "isDesktopOnly": false
+}
