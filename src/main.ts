@@ -178,13 +178,14 @@ export default class BasesCardRedirect extends Plugin {
         return null;
     }
 
-    private fmEquals(value: any, expected: string): boolean {
+    private fmEquals(value: unknown, expected: string): boolean {
         if (value == null) return false;
         if (Array.isArray(value)) return value.some((x) => this.fmEquals(x, expected));
+        if (typeof value === "object") return false;
         return String(value) === expected;
     }
 
-    private resolveLinkToFile(link: any): TFile | null {
+    private resolveLinkToFile(link: unknown): TFile | null {
         if (typeof link !== "string") return null;
 
         // Expect: "[[Target]]" or "[[Target|Alias]]"

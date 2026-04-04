@@ -42,8 +42,6 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
         const { containerEl } = this;
         containerEl.empty();
     
-        containerEl.createEl("h2", { text: "Bases Card Redirect" });
-    
         // ------------------------
         // Redirect cssclass
         // ------------------------
@@ -52,7 +50,7 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
             .setDesc("Only redirect clicks in base views where the containing note has this cssclass. Leave blank to apply to all notes assuming other criteria are met.")
             .addText((t) =>
                 t
-                    .setPlaceholder("card-redirect")
+                    .setPlaceholder("CSS class")
                     .setValue(this.plugin.settings.redirectCssClass)
                     .onChange(async (v) => {
                         this.plugin.settings.redirectCssClass = v.trim();
@@ -82,7 +80,9 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
                                 await this.plugin.saveSettings();
                             }
                         });
-                    t.inputEl.style.width = "100%";
+                    t.inputEl.setCssProps({
+                        "width": "100%"
+                    })
                     return t;
                 })
                 .addExtraButton((b) =>
@@ -116,7 +116,7 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
             .setDesc("The formula column name in the base card that contains the link to the source note.")
             .addText((t) =>
                 t
-                    .setPlaceholder("link")
+                    .setPlaceholder("Link property")
                     .setValue(this.plugin.settings.sourceProperty)
                     .onChange(async (v) => {
                         this.plugin.settings.sourceProperty = v.trim();
@@ -136,8 +136,10 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
         this.plugin.settings.rules.forEach((rule, idx) => {
             const setting = new Setting(containerEl);
 
-            setting.controlEl.style.width = "100%";
-            setting.controlEl.style.flexWrap = "nowrap";
+            containerEl.setCssProps({
+                "width": "100%",
+                "flexWrap": "nowrap"
+            })
 
             setting.addText((t) => {
                 t
@@ -147,7 +149,9 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
                         rule.matchProperty = v.trim();
                         await this.plugin.saveSettings();
                     });
-                t.inputEl.style.width = "100%";
+                    t.inputEl.setCssProps({
+                        "width": "100%"
+                    })
                 return t;
             });
         
@@ -159,7 +163,9 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
                         rule.matchValue = v;
                         await this.plugin.saveSettings();
                     });
-                t.inputEl.style.width = "100%";
+                    t.inputEl.setCssProps({
+                        "width": "100%"
+                    })
                 return t;
             });
         
@@ -171,7 +177,9 @@ export class BasesCardRedirectSettingTab extends PluginSettingTab {
                         rule.targetProperty = v.trim();
                         await this.plugin.saveSettings();
                     });
-                t.inputEl.style.width = "100%";
+                    t.inputEl.setCssProps({
+                        "width": "100%"
+                    })
                 return t;
             });
         
