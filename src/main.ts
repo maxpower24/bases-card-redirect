@@ -182,7 +182,7 @@ export default class BasesCardRedirect extends Plugin {
         if (value == null) return false;
         if (Array.isArray(value)) return value.some((x) => this.fmEquals(x, expected));
         if (typeof value === "object") return false;
-        return String(value) === expected;
+        return String(value as string | number | boolean | symbol | bigint) === expected;
     }
 
     private resolveLinkToFile(link: unknown): TFile | null {
