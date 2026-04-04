@@ -5,8 +5,9 @@
     "main": "main.js",
     "private": true,
     "scripts": {
-        "dev": "node esbuild.config.mjs",
-        "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+        "dev": "node --env-file=.env esbuild.config.mjs",
+        "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+        "lint": "eslint src/"
     },
     "dependencies": {
         "obsidian": "latest"
@@ -15,6 +16,9 @@
         "@types/node": "^25.5.1",
         "builtin-modules": "^5.0.0",
         "esbuild": "^0.28.0",
+        "eslint": "^10.2.0",
+        "eslint-plugin-obsidianmd": "^0.1.9",
+        "globals": "^17.4.0",
         "tslib": "^2.8.1",
         "typescript": "^6.0.2"
     }

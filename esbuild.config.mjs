@@ -4,6 +4,10 @@ import builtins from "builtin-modules";
 
 const prod = process.argv[2] === "production";
 
+const outfile = prod
+    ? "main.js"
+    : (process.env.OUTFILE ?? "main.js");
+
 const context = await esbuild.context({
     entryPoints: ["src/main.ts"],
     bundle: true,
@@ -28,7 +32,7 @@ const context = await esbuild.context({
     logLevel: "info",
     sourcemap: prod ? false : "inline",
     treeShaking: true,
-    outfile: "main.js",
+    outfile,
 });
 
 if (prod) {

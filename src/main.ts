@@ -45,7 +45,11 @@ export default class BasesCardRedirect extends Plugin {
     // ------------------------
     // Click handler (capture)
     // ------------------------
-    private onClickCapture = async (evt: MouseEvent) => {
+    private onClickCapture = (evt: MouseEvent): void => {
+        void this.handleClick(evt);
+    }
+
+    private async handleClick(evt: MouseEvent): Promise<void> {
         try {
             // Only left and middle click
             if (evt.button !== 0 && evt.button !== 1) return;
